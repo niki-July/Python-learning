@@ -1,7 +1,7 @@
 # Python-learning
 **<font color=#ff884d>Let's begin!</font>**
 
-> Target : Artificial Intelligence
+## Target : Artificial Intelligence
 
 ## Detailed Description:
 1. **Be able to communicate with people about daily things;**
