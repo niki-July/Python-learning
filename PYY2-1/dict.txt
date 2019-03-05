@@ -1,0 +1,6 @@
+apple
+fruit
+rose
+flower
+time
+money
