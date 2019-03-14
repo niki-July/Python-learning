@@ -35,34 +35,44 @@ while True:
 
             #Python读取文本文档内容
             file_object = open(r"dict.txt",'r')
-            try:
-                lines = file_object.readlines()
-            finally:
-                file_object.close( )
-                #print(lines)
+            lines = file_object.readlines()
+            file_object.close( )
+            print(lines)
                 
-                #去除list元素后的\n
-                for i in range(len(lines)):
-                    lines[i] = lines[i].replace('\n','')
-                #print(lines)
-                
-                #将文本文档内容按要求存储在字典中
-                dictionary = {}
-                num = 0
-                for word in lines:
-                    #if word != '\n':
-                    num+= 1
-                    if num % 2:    #偶数为key，奇数为value
-                        dictionary[lines[num-1]] = lines[num]
-                #print(dictionary)
+            #去除list元素后的\n；并将字符串转换为单词保存
+            keys = []
+            values = []
+            num = 0
+            for i in range(len(lines)):
+                lines[i] = lines[i].replace('\n','')
+                div = lines[i].split(' - ')
+                #print(div)
+                if len(div) != 2:
+                    print('The format in line %d is error, please check it later.' % num)
+                elif div[0] == '':
+                    print('The key in line %d is missing, please check it later.' % num)
+                elif div[1] == '':
+                    print('The value in line %d is missing, please check it later.' % num)
+                else:
+                    keys.insert(num, div[0])
+                    values.insert(num, div[1])
+                num+= 1
 
-        
-        word = input('Please input the word：')
-        try:
-            if sys.argv[1] == '--timerOn':
-                start_time = time.time()
-                print(dictionary.get(word,'unknown') + ' (' + str(int((time.time()-start_time)*1e6)) + 'us)')
-            else:
-                print(dictionary.get(word,'unknown'))
-        except Exception as e:
-                print(dictionary.get(word,'unknown'))
+            #print(keys)
+            #print(values)
+            #将文本文档内容按要求存储在字典中
+            dictionary = {}
+            
+            for i in range(len(keys)):
+                dictionary[keys[i]] = values[i]
+            #print(dictionary)
+    
+    word = input('Please input the word:')
+    try:
+        if sys.argv[1] == '--timerOn':
+            start_time = time.time()
+            print(dictionary.get(word,'unknown') + ' (' + str(int((time.time()-start_time)*1e6)) + 'us)')
+        else:
+            print(dictionary.get(word,'unknown'))
+    except Exception as e:
+            print(dictionary.get(word,'unknown'))

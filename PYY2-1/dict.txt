@@ -1,8 +1,10 @@
-apple
-fruit
-rose
-flower
-time
-money
-lalala
-shaby
+apple - fruit
+rose - flower
+time - money
+lalala - shaby
+niki - a lovely girl~
+wrong key - 
+
+null
+and word with no explanation
+ - lalala
